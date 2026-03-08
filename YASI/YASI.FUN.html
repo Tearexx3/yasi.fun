@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YASI.FUN</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:#e9e9e9;
+font-family:'Patrick Hand', cursive;
+text-align:center;
+}
+
+/* HEADER */
+
+.header{
+padding:40px 0 10px 0;
+}
+
+.logo{
+font-size:60px;
+font-weight:bold;
+letter-spacing:3px;
+}
+
+/* FACE */
+
+.character{
+position:relative;
+display:inline-block;
+width:120px;
+height:120px;
+vertical-align:middle;
+}
+
+.face{
+width:120px;
+border-radius:50%;
+}
+
+/* EYES OVERLAY */
+
+.eye{
+position:absolute;
+width:22px;
+height:22px;
+pointer-events:none;
+}
+
+/* positions tuned for your PNG */
+
+.eye.left{
+top:55px;
+left:32px;
+}
+
+.eye.right{
+top:55px;
+right:32px;
+}
+
+/* FIXED PUPIL */
+
+.pupil{
+width:11px;
+height:11px;
+background:#111;
+border-radius:50%;
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%, -50%);
+transition: transform 0.08s linear;
+}
+
+/* SUBTITLE */
+
+.subtitle{
+color:#444;
+margin-top:5px;
+font-size:22px;
+}
+
+/* GRID */
+
+.grid{
+width:1100px;
+margin:40px auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+/* CARDS */
+
+.card{
+height:150px;
+border-radius:20px;
+border:3px solid #444;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+font-weight:bold;
+color:white;
+text-shadow:0 3px 8px rgba(0,0,0,0.6);
+transition:0.2s;
+}
+
+.card:hover{
+transform:scale(1.05);
+cursor:pointer;
+}
+
+/* SAMPLE BACKGROUNDS */
+
+.card1{background-image:url("https://picsum.photos/600/300?random=1");}
+.card2{background-image:url("https://picsum.photos/600/300?random=2");}
+.card3{background-image:url("https://picsum.photos/600/300?random=3");}
+.card4{background-image:url("https://picsum.photos/600/300?random=4");}
+.card5{background-image:url("https://picsum.photos/600/300?random=5");}
+.card6{background-image:url("https://picsum.photos/600/300?random=6");}
+.card7{background-image:url("https://picsum.photos/600/300?random=7");}
+.card8{background-image:url("https://picsum.photos/600/300?random=8");}
+.card9{background-image:url("https://picsum.photos/600/300?random=9");}
+
+/* FOOTER */
+
+.footer{
+margin-top:80px;
+padding:40px;
+text-align:center;
+color:#555;
+font-size:18px;
+}
+
+.footer-links{
+margin:20px 0;
+}
+
+.footer-links a{
+text-decoration:none;
+margin:0 10px;
+padding:10px 16px;
+border:1px solid #bbb;
+border-radius:12px;
+background:#f2f2f2;
+color:#333;
+font-size:16px;
+}
+
+.footer-links a:hover{
+background:#e5e5e5;
+}
+
+.privacy{
+margin-top:10px;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1 class="logo">
+
+YASI
+
+<span class="character">
+
+<img src="face.png" class="face">
+
+<div class="eye left">
+<div class="pupil"></div>
+</div>
+
+<div class="eye right">
+<div class="pupil"></div>
+</div>
+
+</span>
+
+FUN
+
+</h1>
+
+<div class="subtitle">games and stuff by Yasi</div>
+
+</div>
+
+<div class="grid">
+
+<div class="card card1">Sandbox</div>
+<div class="card card2">Size of Life</div>
+<div class="card card3">Not a Robot</div>
+
+<div class="card card4">Internet Roadtrip</div>
+<div class="card card5">Clicker</div>
+<div class="card card6">Infinite Craft</div>
+
+<div class="card card7">Artifacts</div>
+<div class="card card8">Password Game</div>
+<div class="card card9">Space Elevator</div>
+
+</div>
+
+<script>
+
+const pupils = document.querySelectorAll(".pupil");
+
+document.addEventListener("mousemove",(e)=>{
+
+const centerX = window.innerWidth/2;
+const centerY = window.innerHeight/2;
+
+const angle = Math.atan2(e.clientY-centerY, e.clientX-centerX);
+
+const moveX = Math.cos(angle)*3;
+const moveY = Math.sin(angle)*3;
+
+pupils.forEach(pupil=>{
+pupil.style.transform =
+`translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+});
+
+});
+
+</script>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<p>Hi! I'm Yasi. This is where I make stuff on the web. Obligatory links:</p>
+
+<div class="footer-links">
+
+<a href="#" target="_blank">📧 Newsletter</a>
+
+<a href="https://twitter.com" target="_blank">🐦 Twitter</a>
+
+<a href="#" target="_blank">☕ Buy me a coffee</a>
+
+</div>
+
+<p>Contact - <a href="mailto:yasi@email.com">yasi@email.com</a></p>
+
+<p class="privacy">
+<a href="#">Privacy policy</a>
+</p>
+
+</div>
+
+</body>
+</html>
