@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YASI.FUN</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:#e9e9e9;
+font-family:'Patrick Hand', cursive;
+text-align:center;
+}
+
+/* HEADER */
+
+.header{
+padding:20px 0 0 0;
+}
+
+.logo{
+font-size:90px;
+font-weight:bold;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:0px;
+line-height:1;
+margin:0;
+}
+
+/* FACE */
+
+.character{
+position:relative;
+display:inline-block;
+width:120px;
+height:120px;
+vertical-align:-20px;
+margin:0 -10px;
+}
+
+.face{
+width:120px;
+border-radius:50%;
+}
+
+/* EYES */
+
+.eye{
+position:absolute;
+width:22px;
+height:22px;
+pointer-events:none;
+}
+
+.eye.left{
+top:55px;
+left:31.4px;
+}
+
+.eye.right{
+top:55px;
+right:31.4px;
+}
+
+/* PUPILS */
+
+.pupil{
+width:12px;
+height:12px;
+border-radius:50%;
+position:absolute;
+top:50%;
+left:50%;
+transition: transform 0.08s linear;
+
+background: radial-gradient(circle at 25% 25%,
+white 0%,
+white 8%,
+#5b4b4b 13%,
+#2b1f1f 55%,
+black 100%);
+}
+
+.pupil::after{
+content:"";
+position:absolute;
+width:5px;
+height:5px;
+background:white;
+border-radius:50%;
+top:2px;
+left:3px;
+opacity:0.9;
+}
+
+.left-pupil{
+transform: translate(-52%, -50%);
+}
+
+.right-pupil{
+transform: translate(-48%, -50%);
+}
+
+/* BIRD */
+
+.bird-container{
+position:relative;
+display:inline-block;
+}
+
+#bird{
+position:absolute;
+width:60px;
+top:-16.6px;        /* touches the N */
+left:90%;
+transform:translateX(-50%);
+cursor:pointer;
+}
+
+/* EXIT FLIGHT */
+
+.fly-out{
+animation: flyOut 2.4s forwards linear;
+}
+
+/* RETURN FLIGHT */
+
+.fly-back{
+animation: flyBack 2.6s forwards linear;
+}
+
+@keyframes flyOut{
+
+0%{
+transform:translate(-50%,0);
+}
+
+20%{
+transform:translate(-200px,50px) rotate(-8deg);
+}
+
+40%{
+transform:translate(-500px,120px) rotate(-12deg);
+}
+
+60%{
+transform:translate(-900px,200px) rotate(-16deg);
+}
+
+80%{
+transform:translate(-1300px,260px) rotate(-18deg);
+}
+
+100%{
+transform:translate(-1700px,320px) rotate(-20deg);
+}
+
+}
+
+.fly-out{
+animation: flyOut 4s forwards linear;
+}
+
+@keyframes flyBack{
+
+0%{
+transform:translate(1700px,320px) rotate(15deg);
+}
+
+30%{
+transform:translate(800px,180px) rotate(10deg);
+}
+
+60%{
+transform:translate(250px,60px) rotate(5deg);
+}
+
+100%{
+transform:translate(-50%,0) rotate(0deg);
+}
+
+}
+
+.fly-back{
+animation: flyBack 4s forwards linear;
+}
+
+/* SUBTITLE */
+
+.subtitle{
+color:#444;
+margin-top:5px;
+font-size:22px;
+}
+
+/* GRID */
+
+.grid{
+width:1100px;
+margin:40px auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+/* CARDS */
+
+.card{
+height:150px;
+border-radius:20px;
+border:3px solid #444;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+font-weight:bold;
+color:white;
+text-shadow:0 3px 8px rgba(0,0,0,0.6);
+transition:0.2s;
+}
+
+.card:hover{
+transform:scale(1.05);
+cursor:pointer;
+}
+
+/* SAMPLE BACKGROUNDS */
+
+.card1{background-image:url("https://picsum.photos/600/300?random=1");}
+.card2{background-image:url("https://picsum.photos/600/300?random=2");}
+.card3{background-image:url("https://picsum.photos/600/300?random=3");}
+.card4{background-image:url("https://picsum.photos/600/300?random=4");}
+.card5{background-image:url("https://picsum.photos/600/300?random=5");}
+.card6{background-image:url("https://picsum.photos/600/300?random=6");}
+.card7{background-image:url("https://picsum.photos/600/300?random=7");}
+.card8{background-image:url("https://picsum.photos/600/300?random=8");}
+.card9{background-image:url("https://picsum.photos/600/300?random=9");}
+
+/* FOOTER */
+
+.footer{
+margin-top:80px;
+padding:40px;
+text-align:center;
+color:#555;
+font-size:18px;
+}
+
+.footer-links{
+margin:20px 0;
+}
+
+.footer-links a{
+text-decoration:none;
+margin:0 10px;
+padding:10px 16px;
+border:1px solid #bbb;
+border-radius:12px;
+background:#f2f2f2;
+color:#333;
+font-size:16px;
+}
+
+.footer-links a:hover{
+background:#e5e5e5;
+}
+
+.privacy{
+margin-top:10px;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1 class="logo">
+
+YASI
+
+<span class="character">
+
+<img src="face.png" class="face">
+
+<div class="eye left">
+<div class="pupil left-pupil"></div>
+</div>
+
+<div class="eye right">
+<div class="pupil right-pupil"></div>
+</div>
+
+</span>
+
+FU<span class="bird-container">N
+<img src="Frame1-Bird.png" id="bird">
+</span>
+
+</h1>
+
+<div class="subtitle">games and stuff by Yasi</div>
+
+</div>
+
+<div class="grid">
+
+<div class="card card1">Sandbox</div>
+<div class="card card2">Size of Life</div>
+<div class="card card3">Not a Robot</div>
+
+<div class="card card4">Internet Roadtrip</div>
+<div class="card card5">Clicker</div>
+<div class="card card6">Infinite Craft</div>
+
+<div class="card card7">Artifacts</div>
+<div class="card card8">Password Game</div>
+<div class="card card9">Space Elevator</div>
+
+</div>
+
+<script>
+
+/* EYES */
+
+const pupils = document.querySelectorAll(".pupil");
+const face = document.querySelector(".character");
+
+document.addEventListener("mousemove",(e)=>{
+
+const rect = face.getBoundingClientRect();
+
+const centerX = rect.left + rect.width/2;
+const centerY = rect.top + rect.height/2;
+
+const angle = Math.atan2(e.clientY-centerY, e.clientX-centerX);
+
+const maxX = 3;
+const maxY = 2.2;
+
+const moveX = Math.cos(angle) * maxX;
+const moveY = Math.sin(angle) * maxY;
+
+pupils.forEach(pupil=>{
+
+const base = pupil.classList.contains("left-pupil")
+? "translate(-52%, -50%)"
+: "translate(-48%, -50%)";
+
+pupil.style.transform =
+`${base} translate(${moveX}px, ${moveY}px)`;
+
+});
+
+});
+
+/* BIRD */
+
+const bird = document.getElementById("bird");
+
+const idleFrame = "Frame1-Bird.png";
+
+const flightFrames = [
+"Frame2-Bird.png",
+"Frame3-Bird.png",
+"Frame4-Bird.png"
+];
+
+let frameIndex = 0;
+let flying = false;
+
+function animateBird(){
+
+if(!flying) return;
+
+frameIndex++;
+
+if(frameIndex >= flightFrames.length){
+frameIndex = 0;
+}
+
+bird.src = flightFrames[frameIndex];
+
+}
+
+setInterval(animateBird,140);
+
+bird.addEventListener("click", ()=>{
+
+if(flying) return;
+
+flying = true;
+
+bird.classList.add("fly-out");
+
+/* wait until exit flight finishes */
+
+setTimeout(()=>{
+
+bird.classList.remove("fly-out");
+
+/* move bird far outside screen so it doesn't reappear */
+
+bird.style.transform = "translate(-2000px,400px) rotate(-20deg)";
+
+/* wait outside */
+
+setTimeout(()=>{
+
+bird.classList.add("fly-back");
+
+/* landing */
+
+setTimeout(()=>{
+
+bird.classList.remove("fly-back");
+
+/* reset position */
+
+bird.style.transform = "translateX(-50%)";
+
+bird.src = idleFrame;
+flying = false;
+
+},4000);
+
+},10000);
+
+},4000);
+
+});
+
+</script>
+
+<div class="footer">
+
+<p>Hi! I'm Yasi. This is where I make stuff on the web. Obligatory links:</p>
+
+<div class="footer-links">
+
+<a href="#">📧 Newsletter</a>
+<a href="https://twitter.com">🐦 Twitter</a>
+<a href="#">☕ Buy me a coffee</a>
+
+</div>
+
+<p>Contact - <a href="mailto:yasi@email.com">yasi@email.com</a></p>
+
+<p class="privacy">
+<a href="#">Privacy policy</a>
+</p>
+
+</div>
+
+</body>
+</html>
